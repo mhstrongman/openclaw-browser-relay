@@ -11,11 +11,19 @@ This repo packages a repeatable, secure-ish workflow with one-click start/stop s
 - Local relay listens on `127.0.0.1:18792`
 - Chrome extension attaches to a tab and exposes CDP to OpenClaw
 
+## Security warning
+
+- Keep the Gateway **loopback-only** on the VPS.
+- Never commit `~/.openclaw/openclaw.json` or any tokens/API keys.
+- Relay is **loopback-only** (`127.0.0.1:18792`); do not expose it to LAN/WAN.
+
 ## Why a dedicated Chrome profile
 
 Other extensions inject `chrome-extension://` iframes/scripts, which breaks attach. Use a dedicated profile **with only OpenClaw Browser Relay enabled**.
 
 ## Quick Start
+
+See `docs/quickstart.md` for the full step-by-step.
 
 ### 1) VPS (one-time)
 
@@ -82,6 +90,7 @@ powershell -ExecutionPolicy Bypass -File .\scripts\openclaw-start.ps1 -VpcHost m
 
 ## Docs
 
+- `docs/quickstart.md`
 - `docs/architecture.md`
 - `docs/troubleshooting.md`
 - `docs/security.md`

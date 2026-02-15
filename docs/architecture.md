@@ -1,5 +1,22 @@
 ﻿# Architecture
 
+## Diagram
+
+```
+┌──────────────────────────────┐        SSH tunnel         ┌─────────────────────────┐
+│ Local Windows                │ 127.0.0.1:18790 -> 18789  │ VPS (Gateway 18789)      │
+│ OpenClaw Node Host           │──────────────────────────►│ OpenClaw Gateway         │
+│ Relay 127.0.0.1:18792        │                           │ (loopback-only)          │
+└───────────────▲──────────────┘                           └──────────────▲──────────┘
+                │                                                    openclaw browser
+                │ Extension attach (CDP)                               commands / tools
+┌───────────────┴──────────────┐
+│ Chrome tab (dedicated profile)│
+│ OpenClaw Browser Relay ext    │
+└──────────────────────────────┘
+```
+
+
 ## Components
 - **VPS**: OpenClaw Gateway (loopback-only)
 - **Local**: OpenClaw Node Host + Browser Relay

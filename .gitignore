@@ -8,6 +8,10 @@ openclaw/chrome-profile/
 
 # Auth / tokens / exports
 **/auth.json
+**/openclaw.json
+**/.openclaw/
+**/.env
+**/.env.*
 **/*token*
 **/*secret*
 openclaw/exports/
