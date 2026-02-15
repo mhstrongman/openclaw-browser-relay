@@ -21,6 +21,22 @@ This repo packages a repeatable, secure-ish workflow with one-click start/stop s
 
 Other extensions inject `chrome-extension://` iframes/scripts, which breaks attach. Use a dedicated profile **with only OpenClaw Browser Relay enabled**.
 
+## Architecture (ASCII)
+
+```
+┌──────────────────────────────┐        SSH tunnel         ┌─────────────────────────┐
+│ Local Windows                │ 127.0.0.1:18790 -> 18789  │ VPS (Gateway 18789)      │
+│ OpenClaw Node Host           │──────────────────────────►│ OpenClaw Gateway         │
+│ Relay 127.0.0.1:18792        │                           │ (loopback-only)          │
+└───────────────▲──────────────┘                           └──────────────▲──────────┘
+                │                                                    openclaw browser
+                │ Extension attach (CDP)                               commands / tools
+┌───────────────┴──────────────┐
+│ Chrome tab (dedicated profile)│
+│ OpenClaw Browser Relay ext    │
+└──────────────────────────────┘
+```
+
 ## Quick Start
 
 See `docs/quickstart.md` for the full step-by-step.
@@ -98,3 +114,7 @@ powershell -ExecutionPolicy Bypass -File .\scripts\openclaw-start.ps1 -VpcHost m
 ## License
 
 MIT. See `LICENSE`.
+
+
+
+
