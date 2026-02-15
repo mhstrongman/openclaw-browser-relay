@@ -1,0 +1,16 @@
+﻿# Logs
+**/*.log
+openclaw/logs/
+
+# Chrome profiles
+openclaw/chrome-profile-openclaw/
+openclaw/chrome-profile/
+
+# Auth / tokens / exports
+**/auth.json
+**/*token*
+**/*secret*
+openclaw/exports/
+
+# Node artifacts
+node-host*.log
